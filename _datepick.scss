@@ -1,0 +1,168 @@
+
+.woodatepick {
+  width: 100%;
+  background-color: $white;
+  border: 1px solid $lighter-gray;
+  padding: 8px;
+  margin: 8px 0;
+  height: 100%;
+  text-align: center;
+  position: relative;
+  border-radius: 4px;
+
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
+
+  .datepick__button {
+    background: transparent;
+  }
+
+  .datepick__header {
+    background-color: $main-blue;
+    color: $white;
+    padding: 10px 0;
+  }
+
+  .date__item {
+    position: relative;
+    width: (100% / 7);
+    display: block;
+    float: left;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    height: 40px;
+    font-weight: 300;
+
+    &.disabled {
+      background-color: $dark-gray;
+      cursor: not-allowed;
+    }
+  }
+
+  .datepick__dates {
+    .date__item {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  }
+  .datepick__body {
+    min-height: 250px;
+    .week__row {
+      width: (100% / 8);
+      display: block;
+      height: 100%;
+      background-color: $main-blue;
+      float: left;
+      cursor: not-allowed;
+      .date__item {
+        cursor: not-allowed;
+        font-size: 12px;
+        line-height: 26px;
+        color: $white;
+        width: 100%;
+      }
+    }
+
+    .date__item {
+      position: relative;
+      .number {
+        position: relative;
+        z-index: 2;
+      }
+
+      .selector {
+        background-color: $main-blue;
+        position: absolute;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        left: 50%;
+        top: 50%;
+        transform: scale(0);
+        transform-origin: 50% 50%;
+        -webkit-transform: scale(0);
+        -webkit-transform-origin: 50% 50%;
+        transition: all 300ms ease-in-out;
+        z-index: 0;
+      }
+
+      &.selected {
+        color: white;
+
+        .selector {
+          left: 50%;
+          top: 50%;
+          -webkit-transform: scale(1) translateX(-50%) translateY(-50%);
+          transform: scale(1) translateX(-50%) translateY(-50%);
+        }
+      }
+    }
+  }
+
+
+  &.disabled {
+    background-color: $lightest-gray;
+
+    .datepick__header {
+      background-color: $light-gray;
+    }
+
+    .date__item {
+      background-color: $dark-gray;
+      cursor: not-allowed;
+    }
+  }
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .arrow {
+    position: relative;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      border: solid transparent;
+      content: " ";
+      border-right-color: #fefefe;
+      border-width: 11px;
+    }
+
+    &.right {
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        border: solid transparent;
+        content: " ";
+        border-left-color: #fefefe;
+        border-width: 11px;
+      }
+    }
+  }
+
+
+  &.week--layout {
+    .datepick__dates {
+      .date__item {
+        width: (100% / 8);
+      }
+    }
+
+    .datepick__row {
+      .date__item {
+        width: (100% / 8);
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<div class="woodatepick" ng-class="{disabled: disabled, 'week--layout': showWeek}">
+  <div class="datepick__header clearfix">
+    <button ng-click="current.previousMonth()" class="datepick__button left">
+      <span class="arrow left"></span>
+    </button>
+    {{ current.displayMonth}} {{ current.year}}
+    <button ng-click="current.nextMonth()" class="datepick__button right">
+      <span class="arrow right"></span>
+    </button>
+  </div>
+  <div class="datepick__dates">
+    <div class="date__item" ng-if="showWeek">v.</div>
+    <div class="date__item" ng-repeat="weekday in options.weekdayNames" ng-style="{'color': weekday.color}">{{ ::weekday.short}}</div>
+  </div>
+  <div class="datepick__body">
+    <div class="week__row" ng-if="showWeek">
+      <div class="date__item" ng-repeat="week in current.weeks track by $index">{{week}}</div>
+    </div>
+    <div class="datepick__row clearfix">
+      <div class="date__item" ng-repeat="day in fullDisplayMonth track by $index" ng-class="{disabled: day.disabled, selected: day.selected}" ng-click="current.selectDate(day)" ng-if="day !== undefined"><div class="number">{{day.date}}</div><div class="selector"></div></div>
+    </div>
+  </div>
+</div>
